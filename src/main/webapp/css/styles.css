@@ -1,11 +1,21 @@
 .fa-bell {
-    margin-right: 10px !important;
+    margin-right: 10px;
 }
 
-.fa-bell:hover {
-    color: #ffd700 !important;
+.fa-bell-clicked, .fa-bell:hover {
+    color: red;
 }
 
-.fa-heart:hover {
-    color: #e83e8c !important;
+.star-clicked, .fa-star:hover {
+    color: #ffd700;
+}
+
+.my-icons {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
 }
