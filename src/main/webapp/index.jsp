@@ -29,7 +29,7 @@
             
             <div class="tab-content">
                 <div id="all" class="container tab-pane active"><br>
-                    
+                    <jsp:include page="accordion.jsp" />
                 </div>
                 <div id="fav" class="container tab-pane fade"><br>
                     <!-- <p>Nie posiadasz ulubionych!</p> -->
