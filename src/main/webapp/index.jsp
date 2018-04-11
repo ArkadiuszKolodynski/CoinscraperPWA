@@ -4,7 +4,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" href="favicon.ico" >
+        <meta name="theme-color" content="#0088ff">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/themify-icons.css">
@@ -20,7 +22,7 @@
             
             <ul class="nav nav-pills justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#all">Wszystkie</a>
+                    <a class="nav-link active" onclick="showAll()" data-toggle="pill" href="#all">Wszystkie</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" onclick="showFavs()" data-toggle="pill" href="#fav">Ulubione</a>
@@ -28,12 +30,11 @@
             </ul>
             
             <div class="tab-content">
-                <div id="all" class="container tab-pane active"><br>
+                <div id="all" class="container">
                     <jsp:include page="accordion.jsp" />
                 </div>
-                <div id="fav" class="container tab-pane fade"><br>
-                    <!-- <p>Nie posiadasz ulubionych!</p> -->
-                </div>
+<!--                <div id="fav" class="container tab-pane fade">
+                </div>-->
             </div>
         </div>
 

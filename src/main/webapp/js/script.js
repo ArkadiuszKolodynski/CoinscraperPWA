@@ -3,14 +3,7 @@ $(document).ready(function(){
         trigger : 'hover'
     });
     
-    if (localStorage.getItem("favs") === null) {
-        localStorage.setItem("favs", "[]");
-    } else {
-        var favourites = JSON.parse(localStorage.favs);
-        for (var i = 0; i < favourites.length; i++) {
-            document.getElementById(favourites[i]).classList.toggle('star-clicked');
-        }
-    }
+    setFavs();
 });
 
 function toggleFav(element) {
@@ -30,19 +23,31 @@ function toggleFav(element) {
 }
 
 function showFavs() {
-    if (localStorage.getItem("favs") === null || localStorage.favs === "[]") {
-        document.getElementById("fav").innerHTML = "<br><p class=\"text-center\">Nie posiadasz ulubionych!</p>";
+    if (JSON.parse(localStorage.getItem("favs")).length > 0) {
+        var path = "accordion.jsp?fav=";
+        var fav = JSON.parse(localStorage.getItem("favs"));
+        for (var i = 0; i < fav.length; i++) {
+            path = path + fav[i] + ',';
+        }
+        $("#all").load(path);
+    } else {
+        document.getElementById("all").innerHTML = "<br><p class=\"text-center\">Nie posiadasz ulubionych!</p>";
+    }
+    setFavs();
+}
+
+function showAll() {
+    $("#all").load("accordion.jsp");
+    setFavs();
+}
+
+function setFavs() {
+    if (localStorage.getItem("favs") === null) {
+        localStorage.setItem("favs", "[]");
     } else {
         var favourites = JSON.parse(localStorage.favs);
         for (var i = 0; i < favourites.length; i++) {
-            var e = document.getElementById(favourites[i].replace("star",""));
-//            alert(e.toLocaleString());
-            var fav = document.getElementById("fav");
-            fav.innerHTML = "<br>";
-            fav.appendChild(document.createElement("div"));
-            fav.appendChild(e);
-//            document.getElementById("fav").
+            document.getElementById(favourites[i]).classList.toggle('star-clicked');
         }
-        //document.getElementById("fav").innerHTML = "<br><p>Posiadasz ulubione!</p>";
     }
 }
