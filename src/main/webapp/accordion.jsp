@@ -6,6 +6,7 @@
     String connectionUrl = "jdbc:sqlserver://currenciesdb.cat8w0eapj1d.eu-central-1.rds.amazonaws.com\\currenciesdb:1433";
     String userid = "WebScrapper";
     String password = "";
+    int iterator = 1;
     try {
         Class.forName(driver);
     } catch (ClassNotFoundException e) {
@@ -26,21 +27,24 @@
             params = params.replaceAll(",", "' or Symbol='");
             sql = "select * from Currencies where Symbol='" + params + "';";
         } else {
-            sql = "select * from [Currencies].[dbo].[Currencies]";
+            sql = "select top 100 * from [Currencies].[dbo].[Currencies]";
         }
         resultSet = statement.executeQuery(sql);
         while (resultSet.next()) {
 %>
                         <div id="<%=resultSet.getString("symbol")%>" class="card">
                             <div class="card-header">
-                                <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><i id="star<%=resultSet.getString("symbol")%>" class="far fa-star" onclick="toggleFav(this.id)"></i></a>
-                                <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><i id="bell1" class="far fa-bell"></i></a>
+                                <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star<%=resultSet.getString("symbol")%>" class="icon-star" onclick="toggleFav(this.id)"></span></a>
+                                <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell<%=resultSet.getString("symbol")%>" class="icon-bell"></span></a>
                                 <a class="card-link" data-toggle="collapse" href="#collapse<%=resultSet.getString("symbol")%>">
-                                    <tr>
-                                        <td><%=resultSet.getString("Symbol")%></td>
-                                        <td><%=resultSet.getString("Name")%></td>
-                                        <!--<td><img src="<%=resultSet.getString("logo")%>" /></td>-->
-                                    </tr>
+                                    <table>
+                                        <tr>
+                                            <td><%=iterator%>.</td>
+                                            <td><%=resultSet.getString("Symbol")%></td>
+                                            <td><%=resultSet.getString("Name")%></td>
+                                            <!--<td><img src="<%//=resultSet.getString("logo")%>" /></td>-->
+                                        </tr>
+                                    </table>
                                 </a>
                             </div>
                             <div id="collapse<%=resultSet.getString("symbol")%>" class="collapse" data-parent="#accordion">
@@ -49,6 +53,7 @@
                                 </div>
                             </div>
                         </div><%
+            iterator++;
         }
         connection.close();
     } catch (Exception e) {

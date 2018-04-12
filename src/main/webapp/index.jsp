@@ -1,5 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!doctype html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%><!doctype html>
 <html lang="pl">
     <head>
         <meta charset="utf-8">
@@ -9,7 +8,6 @@
         <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/themify-icons.css">
         <title>Webscraper-PWA-Client</title>
     </head>
     <body>
@@ -22,19 +20,20 @@
             
             <ul class="nav nav-pills justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" onclick="showAll()" data-toggle="pill" href="#all">Wszystkie</a>
+                    <a class="nav-link active" data-toggle="pill" href="#all">Wszystkie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick="showFavs()" data-toggle="pill" href="#fav">Ulubione</a>
+                    <a class="nav-link" data-toggle="pill" href="#fav">Ulubione</a>
                 </li>
             </ul>
             
             <div class="tab-content">
-                <div id="all" class="container">
+                <div id="all" class="container tab-pane active show">
                     <jsp:include page="accordion.jsp" />
                 </div>
-<!--                <div id="fav" class="container tab-pane fade">
-                </div>-->
+                <div id="fav" class="container tab-pane fade text-center">
+                    <br>Nie posiadasz ulubionych!<br>
+                </div>
             </div>
         </div>
 
@@ -42,6 +41,5 @@
         <script src="js/script.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script defer src="js/fontawesome-all.js"></script>
     </body>
 </html>

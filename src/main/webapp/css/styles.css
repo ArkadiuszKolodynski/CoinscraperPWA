@@ -1,12 +1,45 @@
-.fa-bell {
+@font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?861mkb');
+    src:  url('fonts/icomoon.eot?861mkb#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?861mkb') format('truetype'),
+        url('fonts/icomoon.woff?861mkb') format('woff'),
+        url('fonts/icomoon.svg?861mkb#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+  /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bell:before {
+    content: "\e900";
+}
+.icon-star:before {
+    content: "\e901";
+}
+
+.icon-bell {
     margin-right: 10px;
 }
 
-.fa-bell-clicked, .fa-bell:hover {
+.icon-bell:hover {
     color: red;
 }
 
-.star-clicked, .fa-star:hover {
+.star-clicked, .icon-star:hover {
     color: #ffd700;
 }
 
@@ -18,4 +51,5 @@
     color: #000;
     text-shadow: 0 1px 0 #fff;
     opacity: .5;
+    text-decoration: none !important;
 }
