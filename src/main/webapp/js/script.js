@@ -16,7 +16,16 @@ function setFavs() {
     } else {
         var favourites = JSON.parse(localStorage.favs);
         for (var i = 0; i < favourites.length; i++) {
-            document.getElementById(favourites[i]).classList.toggle('star-clicked');
+            if (document.getElementById(favourites[i]) !== null) {
+                document.getElementById(favourites[i]).classList.toggle('star-clicked');
+            } else {
+                alert(localStorage.favs);
+                if (i !== -1) {
+                    favourites.splice(i, 1);
+                }
+                localStorage.favs = JSON.stringify(favourites);
+                alert(localStorage.favs);
+            }
         }
     }
 }
