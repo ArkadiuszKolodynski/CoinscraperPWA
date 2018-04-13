@@ -6,6 +6,10 @@ $(document).ready(function(){
     setFavs();
 });
 
+$(".icon-bell, .icon-star").click(function(evt) {
+    evt.preventDefault();
+});
+
 function setFavs() {
     if (localStorage.getItem("favs") === null) {
         localStorage.setItem("favs", "[]");

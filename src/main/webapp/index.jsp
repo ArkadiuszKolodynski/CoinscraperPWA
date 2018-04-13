@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="theme-color" content="#0088ff">
+        <meta name="description" content="Agregator kursów krypto walut">
         <link rel="shortcut icon" href="favicon.ico">
         <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/styles.css">

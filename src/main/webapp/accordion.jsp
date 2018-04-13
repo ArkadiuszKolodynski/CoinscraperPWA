@@ -20,15 +20,7 @@
         connection = DriverManager.getConnection(connectionUrl, userid, password);
         statement = connection.createStatement();
         String sql;
-        String params = request.getParameter("fav");
-        if (params != null) {
-            params = params.replaceAll("star", "");
-            params = params.substring(0, params.length() - 1);
-            params = params.replaceAll(",", "' or Symbol='");
-            sql = "select * from Currencies where Symbol='" + params + "';";
-        } else {
-            sql = "select top 100 * from [Currencies].[dbo].[Currencies]";
-        }
+        sql = "select top 100 * from [Currencies].[dbo].[Currencies]";
         resultSet = statement.executeQuery(sql);
         while (resultSet.next()) {
 %>
@@ -39,7 +31,7 @@
                                 <a class="card-link" data-toggle="collapse" href="#collapse<%=resultSet.getString("symbol")%>">
                                     <table>
                                         <tr>
-                                            <td><%=iterator%>.</td>
+                                            <td><%=iterator++%>.</td>
                                             <td><%=resultSet.getString("Symbol")%></td>
                                             <td><%=resultSet.getString("Name")%></td>
                                             <!--<td><img src="<%//=resultSet.getString("logo")%>" /></td>-->
@@ -53,7 +45,6 @@
                                 </div>
                             </div>
                         </div><%
-            iterator++;
         }
         connection.close();
     } catch (Exception e) {

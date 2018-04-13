@@ -1,6 +1,6 @@
 {
     "name": "Webscraper PWA Client",
-    "short_name": "WebscraperPWA",
+    "short_name": "Webscraper",
     "icons": [
         {
             "src": "images/icons/icon-72x72.png",
@@ -45,6 +45,6 @@
     ],
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#000000",
+    "background_color": "#ffffff",
     "theme_color": "#0088ff"
 }
