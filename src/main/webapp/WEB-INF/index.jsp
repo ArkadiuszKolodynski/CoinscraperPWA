@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%@page contentType="text/html" pageEncoding="UTF-8"%><!doctype html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><%@page contentType="text/html" pageEncoding="UTF-8"%><!doctype html>
 <html lang="pl">
     <head>
         <meta charset="utf-8">
@@ -21,17 +21,18 @@
             
             <ul class="nav nav-pills justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#all">Wszystkie</a>
+                    <a class="nav-link active" data-toggle="pill" href="#" onclick="showAll()">Wszystkie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#fav">Ulubione</a>
+                    <a class="nav-link" data-toggle="pill" href="#" onclick="showFavs()">Ulubione</a>
                 </li>
             </ul>
             
             <div class="tab-content">
-                <div id="all" class="container tab-pane active show">
-                    <br><div id="accordion">
-                        <c:forEach var = "currency" items = "${list}">
+                <div id="all" class="container">
+                    <br>
+                    <div id="accordion">
+                        <c:forEach var="currency" items="${list}">
                         <div id="${currency.getSymbol()}" class="card">
                             <div class="card-header">
                                 <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
@@ -39,10 +40,11 @@
                                 <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}">
                                     <table>
                                         <tr>
+                                            <td><img src="logo?id=${currency.getSymbol()}" alt=""/></td>
                                             <td>${currency.getSymbol()}</td>
                                             <td>${currency.getName()}</td>
                                         </tr>
-                                </table>
+                                    </table>
                                 </a>
                             </div>
                             <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
@@ -52,13 +54,17 @@
                             </div>
                         </div>
                         </c:forEach>
-                    </div><br>
-                </div>
-                <div id="fav" class="container tab-pane fade text-center">
-                    <br>Nie posiadasz ulubionych!<br>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
+
+        <footer class="page-footer">
+            <div class="footer-copyright py-4 text-center"><jsp:useBean id="now" class="java.util.Date" /><fmt:formatDate var="year" value="${now}" pattern="yyyy" />
+                ⓒ ${year}
+            </div>
+        </footer>
 
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/script.js"></script>

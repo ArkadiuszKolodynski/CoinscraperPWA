@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/PWAclient"/>
+<Context path="/PWAclient">
+    <Resource name="jdbc/SQL-Server" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="WebScrapper" password="" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+               url="jdbc:sqlserver://currenciesdb.cat8w0eapj1d.eu-central-1.rds.amazonaws.com\\currenciesdb:1433"/>
+</Context>

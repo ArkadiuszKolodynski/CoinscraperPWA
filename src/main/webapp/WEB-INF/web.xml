@@ -8,9 +8,23 @@
         <servlet-name>GetCurrencies</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GetCurrencyLogo</servlet-name>
+        <servlet-class>pl.pt.put.poznan.servlets.GetCurrencyLogo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCurrencyLogo</servlet-name>
+        <url-pattern>/logo</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/SQL-Server</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
     <welcome-file-list>
         <welcome-file>index</welcome-file>
     </welcome-file-list>

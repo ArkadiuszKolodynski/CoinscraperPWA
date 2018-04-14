@@ -53,3 +53,7 @@
     opacity: .5;
     text-decoration: none !important;
 }
+
+td {
+    padding-right: 5px;
+}
