@@ -20,7 +20,7 @@ function setFavs() {
         while (i--) {
             if (document.getElementById(favourites[i]) !== null) {
                 document.getElementById(favourites[i]).classList.add("star-clicked");
-                $("#" + favourites[i]).parent().attr("title", "Usuń z ulubionych");
+                $("#" + $.escapeSelector(favourites[i])).parent().attr("title", "Usuń z ulubionych");
             } else {
                 favourites.splice(i, 1);
                 localStorage.favs = JSON.stringify(favourites);
@@ -31,10 +31,10 @@ function setFavs() {
 
 function toggleFav(elementId) {
     document.getElementById(elementId).classList.toggle("star-clicked");
-    if ($("#" + elementId).parent().attr("data-original-title") === "Dodaj do ulubionych") {
-        $("#" + elementId).parent().attr("data-original-title", "Usuń z ulubionych");
+    if ($("#" + $.escapeSelector(elementId)).parent().attr("data-original-title") === "Dodaj do ulubionych") {
+        $("#" + $.escapeSelector(elementId)).parent().attr("data-original-title", "Usuń z ulubionych");
     } else {
-        $("#" + elementId).parent().attr("data-original-title", "Dodaj do ulubionych");
+        $("#" + $.escapeSelector(elementId)).parent().attr("data-original-title", "Dodaj do ulubionych");
     }
     
     var favourites = JSON.parse(localStorage.favs);

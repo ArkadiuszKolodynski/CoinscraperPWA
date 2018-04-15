@@ -36,12 +36,14 @@ public class GetCurrenciesDetails extends HttpServlet {
                 while (resultSet.next()) {
                     currenciesList.add(new Currency(resultSet.getString("symbol"), resultSet.getString("name")));
                 }
+                connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(GetCurrencyLogo.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         request.setAttribute("list", currenciesList);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        currenciesList.clear();
     }
 
     @Override
