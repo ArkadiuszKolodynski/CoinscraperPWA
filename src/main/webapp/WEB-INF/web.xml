@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>GetCurrencies</servlet-name>
-        <servlet-class>pl.pt.put.poznan.servlets.GetCurrencies</servlet-class>
+        <servlet-name>GetCurrenciesDetails</servlet-name>
+        <servlet-class>pl.pt.put.poznan.servlets.GetCurrenciesDetails</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GetCurrencies</servlet-name>
+        <servlet-name>GetCurrenciesDetails</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -28,4 +28,13 @@
     <welcome-file-list>
         <welcome-file>index</welcome-file>
     </welcome-file-list>
+    <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee              http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+        <description>SQL Server</description>
+        <resource-ref>
+            <description>DB Connection</description>
+            <res-ref-name>jdbc/SQL-Server</res-ref-name>
+            <res-type>javax.sql.DataSource</res-type>
+            <res-auth>Container</res-auth>
+        </resource-ref>
+    </web-app>
 </web-app>

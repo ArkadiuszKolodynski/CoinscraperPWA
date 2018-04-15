@@ -2,7 +2,6 @@ package pl.pt.put.poznan.servlets;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,38 +16,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import pl.pt.put.poznan.classes.Currency;
 
-public class GetCurrencies extends HttpServlet {
+public class GetCurrenciesDetails extends HttpServlet {
+    
     @Resource(name="jdbc/SQL-Server")
     private DataSource dataSource;
+    private final String SQL_QUERY;
+    private final ArrayList<Currency> currenciesList;
+
+    public GetCurrenciesDetails() {
+        this.SQL_QUERY = "SELECT TOP 100 * FROM [Currencies].[dbo].[Currencies]";// ORDER BY newid()";
+        this.currenciesList = new ArrayList<>();
+    }
     
-    @SuppressWarnings("null")
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Connection conn = null;
-        Statement st;
-        ResultSet rs;
-        ArrayList<Currency> currenciesList = new ArrayList<>();
-   
-        try {
-            conn = dataSource.getConnection();
-            st = conn.createStatement();
-            String sql = "select top 100 * from [Currencies].[dbo].[Currencies] ORDER BY newid()";
-            rs = st.executeQuery(sql);
-            while (rs.next()) {
-                Currency c = new Currency(rs.getString("symbol"), rs.getString("name"));
-                currenciesList.add(c);
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(GetCurrencies.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    Logger.getLogger(GetCurrencies.class.getName()).log(Level.SEVERE, null, e);
+        
+        try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
+                while (resultSet.next()) {
+                    currenciesList.add(new Currency(resultSet.getString("symbol"), resultSet.getString("name")));
                 }
-            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GetCurrencyLogo.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         request.setAttribute("list", currenciesList);

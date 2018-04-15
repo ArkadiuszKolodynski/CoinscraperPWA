@@ -20,7 +20,11 @@ public class GetCurrencyLogo extends HttpServlet {
 
     @Resource(name="jdbc/SQL-Server")
     private DataSource dataSource;
-    private static final String SQL_QUERY = "SELECT logo FROM [Currencies].[dbo].[Currencies] WHERE Symbol = ?";
+    private final String SQL_QUERY;
+
+    public GetCurrencyLogo() {
+        this.SQL_QUERY = "SELECT logo FROM [Currencies].[dbo].[Currencies] WHERE Symbol = ?";
+    }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

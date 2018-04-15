@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="theme-color" content="#0088ff">
-        <meta name="description" content="Agregator kursów krypto walut">
+        <meta name="description" content="Agregator kursów kryptowalut">
         <link rel="shortcut icon" href="favicon.ico">
         <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/styles.css">
@@ -19,7 +19,7 @@
                 Hello, <strong>world</strong>!
             </div>
             
-            <ul class="nav nav-pills justify-content-center" role="tablist">
+            <ul class="nav nav-pills justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="pill" href="#" onclick="showAll()">Wszystkie</a>
                 </li>
@@ -38,13 +38,7 @@
                                 <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
                                 <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
                                 <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}">
-                                    <table>
-                                        <tr>
-                                            <td><img src="logo?id=${currency.getSymbol()}" alt=""/></td>
-                                            <td>${currency.getSymbol()}</td>
-                                            <td>${currency.getName()}</td>
-                                        </tr>
-                                    </table>
+                                    <img src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
                                 </a>
                             </div>
                             <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
