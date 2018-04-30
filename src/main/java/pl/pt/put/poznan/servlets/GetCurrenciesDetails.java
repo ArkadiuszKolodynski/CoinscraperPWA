@@ -24,7 +24,7 @@ public class GetCurrenciesDetails extends HttpServlet {
     private final ArrayList<Currency> currenciesList;
 
     public GetCurrenciesDetails() {
-        this.SQL_QUERY = "SELECT TOP 100 * FROM [Currencies].[dbo].[Currencies]";// ORDER BY newid()";
+        this.SQL_QUERY = "SELECT * FROM Currencies LIMIT 100";
         this.currenciesList = new ArrayList<>();
     }
     
@@ -38,7 +38,7 @@ public class GetCurrenciesDetails extends HttpServlet {
                 }
                 connection.close();
         } catch (SQLException ex) {
-            Logger.getLogger(GetCurrencyLogo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GetCurrenciesDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         request.setAttribute("list", currenciesList);

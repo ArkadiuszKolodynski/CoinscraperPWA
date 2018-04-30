@@ -23,7 +23,7 @@ public class GetCurrencyLogo extends HttpServlet {
     private final String SQL_QUERY;
 
     public GetCurrencyLogo() {
-        this.SQL_QUERY = "SELECT logo FROM [Currencies].[dbo].[Currencies] WHERE Symbol = ?";
+        this.SQL_QUERY = "SELECT logo FROM Currencies WHERE Symbol = ?";
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
