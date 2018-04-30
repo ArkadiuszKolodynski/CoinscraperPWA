@@ -9,7 +9,7 @@
         <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <title>Webscraper-PWA-Client</title>
+        <title>Coinscraper</title>
     </head>
     <body>
         <br>

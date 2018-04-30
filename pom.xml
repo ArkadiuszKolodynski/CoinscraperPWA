@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.pt.put.poznan</groupId>
-    <artifactId>PWAclient</artifactId>
+    <artifactId>CoinscraperPWA</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>PWAclient</name>
+    <name>CoinscraperPWA</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -31,11 +31,6 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>2.2.3</version>
         </dependency>
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>6.4.0.jre8</version>
-            </dependency>
     </dependencies>
 
     <build>
