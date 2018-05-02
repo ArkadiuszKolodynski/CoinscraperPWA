@@ -4,10 +4,6 @@
         <servlet-name>GetCurrenciesDetails</servlet-name>
         <servlet-class>pl.pt.put.poznan.servlets.GetCurrenciesDetails</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>Storage</servlet-name>
-        <servlet-class>pl.pt.put.poznan.classes.Storage</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>GetCurrenciesDetails</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -20,6 +16,10 @@
         <servlet-name>GetCurrencyLogo</servlet-name>
         <url-pattern>/logo</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Storage</servlet-name>
+        <servlet-class>pl.pt.put.poznan.classes.Storage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Storage</servlet-name>
         <url-pattern>/storage</url-pattern>

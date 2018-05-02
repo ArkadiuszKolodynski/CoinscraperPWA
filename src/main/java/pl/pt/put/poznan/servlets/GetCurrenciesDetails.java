@@ -1,6 +1,8 @@
 package pl.pt.put.poznan.servlets;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,8 +26,7 @@ public class GetCurrenciesDetails extends HttpServlet {
     private final ArrayList<Currency> currenciesList;
 
     public GetCurrenciesDetails() {
-//        this.SQL_QUERY = "SELECT * FROM Currencies LIMIT 100";
-        this.SQL_QUERY = "SELECT Currencies.Symbol, Currencies.Name, CurrencyValues.PriceInDollars FROM Currencies INNER JOIN CurrencyValues ON Currencies.Symbol = CurrencyValues.Symbol GROUP BY Symbol ORDER BY PriceInDollars DESC LIMIT 100";
+        this.SQL_QUERY = "SELECT * FROM priceInDollars";
         this.currenciesList = new ArrayList<>();
     }
     
@@ -35,7 +36,9 @@ public class GetCurrenciesDetails extends HttpServlet {
         try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
                 while (resultSet.next()) {
-                    currenciesList.add(new Currency(resultSet.getString("symbol"), resultSet.getString("name"), resultSet.getDouble("PriceInDollars")));
+                    BigDecimal bd = new BigDecimal(resultSet.getDouble("PriceInDollars"));
+                    bd = bd.setScale(2, RoundingMode.HALF_UP);
+                    currenciesList.add(new Currency(resultSet.getString("symbol"), resultSet.getString("name"), bd.doubleValue()));
                 }
                 connection.close();
         } catch (SQLException ex) {
