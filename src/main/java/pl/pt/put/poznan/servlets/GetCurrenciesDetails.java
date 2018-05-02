@@ -24,7 +24,8 @@ public class GetCurrenciesDetails extends HttpServlet {
     private final ArrayList<Currency> currenciesList;
 
     public GetCurrenciesDetails() {
-        this.SQL_QUERY = "SELECT * FROM Currencies LIMIT 100";
+//        this.SQL_QUERY = "SELECT * FROM Currencies LIMIT 100";
+        this.SQL_QUERY = "SELECT Currencies.Symbol, Currencies.Name, CurrencyValues.PriceInDollars FROM Currencies INNER JOIN CurrencyValues ON Currencies.Symbol = CurrencyValues.Symbol GROUP BY Symbol ORDER BY PriceInDollars DESC LIMIT 100";
         this.currenciesList = new ArrayList<>();
     }
     
@@ -34,7 +35,7 @@ public class GetCurrenciesDetails extends HttpServlet {
         try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
                 while (resultSet.next()) {
-                    currenciesList.add(new Currency(resultSet.getString("symbol"), resultSet.getString("name")));
+                    currenciesList.add(new Currency(resultSet.getString("symbol"), resultSet.getString("name"), resultSet.getDouble("PriceInDollars")));
                 }
                 connection.close();
         } catch (SQLException ex) {
