@@ -1,20 +1,20 @@
 package pl.pt.put.poznan.classes;
 
 public class Currency {
-    private String symbol;
-    private String name;
-    private double priceInDollars;
+    private final String symbol;
+    private final String name;
+    private final double avgPriceInDollars;
+    private final double minPriceInDollars;
+    private final double avgPriceInBitcoin;
+    private final String marketName;
     
-    public Currency() {
-        this.symbol = "none";
-        this.name = "none";
-        this.priceInDollars = 0;
-    }
-    
-    public Currency(String symbol, String name, double priceInDollars) {
+    public Currency(String symbol, String name, double avgPriceInDollars, double minPriceInDollars, double avgPriceInBitcoin, String marketName) {
         this.symbol = symbol;
         this.name = name;
-        this.priceInDollars = priceInDollars;
+        this.avgPriceInDollars = avgPriceInDollars;
+        this.minPriceInDollars = minPriceInDollars;
+        this.avgPriceInBitcoin = avgPriceInBitcoin;
+        this.marketName = marketName;
     }
 
     public String getSymbol() {
@@ -25,7 +25,19 @@ public class Currency {
         return name;
     }
     
-    public double getPriceInDollars() {
-        return priceInDollars;
+    public double getAvgPriceInDollars() {
+        return avgPriceInDollars;
+    }
+
+    public double getMinPriceInDollars() {
+        return minPriceInDollars;
+    }
+
+    public double getAvgPriceInBitcoin() {
+        return avgPriceInBitcoin;
+    }
+
+    public String getMarketName() {
+        return marketName;
     }
 }

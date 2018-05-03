@@ -1,8 +1,6 @@
 package pl.pt.put.poznan.servlets;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +24,7 @@ public class GetCurrenciesDetails extends HttpServlet {
     private final ArrayList<Currency> currenciesList;
 
     public GetCurrenciesDetails() {
-        this.SQL_QUERY = "SELECT * FROM priceInDollars";
+        this.SQL_QUERY = "SELECT * FROM TopCurrencies";
         this.currenciesList = new ArrayList<>();
     }
     
@@ -36,9 +34,14 @@ public class GetCurrenciesDetails extends HttpServlet {
         try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
                 while (resultSet.next()) {
-                    BigDecimal bd = new BigDecimal(resultSet.getDouble("PriceInDollars"));
-                    bd = bd.setScale(2, RoundingMode.HALF_UP);
-                    currenciesList.add(new Currency(resultSet.getString("symbol"), resultSet.getString("name"), bd.doubleValue()));
+                    currenciesList.add(new Currency(
+                            resultSet.getString("Symbol"),
+                            resultSet.getString("Name"),
+                            resultSet.getDouble("AveragePriceInDollars"),
+                            resultSet.getDouble("MinPriceInDollars"),
+                            resultSet.getDouble("AveragePriceInBitcoin"),
+                            resultSet.getString("MinPriceMarketName")
+                    ));
                 }
                 connection.close();
         } catch (SQLException ex) {

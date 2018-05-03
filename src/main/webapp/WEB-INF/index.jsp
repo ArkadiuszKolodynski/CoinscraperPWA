@@ -46,7 +46,11 @@
                                 </div>
                                 <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        Kurs: ${currency.getPriceInDollars()}$
+                                        <ul>
+                                            <li>Średni kurs: ${currency.getAvgPriceInBitcoin()}BTC / ${currency.getAvgPriceInDollars()}$ </li>
+                                            <li>Najniższy kurs: ${currency.getMinPriceInDollars()}$</li>
+                                            <li>Giełda: ${currency.getMarketName()}</li>
+                                        </ul> 
                                     </div>
                                 </div>
                             </div>

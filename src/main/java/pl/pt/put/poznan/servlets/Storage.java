@@ -1,4 +1,4 @@
-package pl.pt.put.poznan.classes;
+package pl.pt.put.poznan.servlets;
 
 import java.io.File;
 import java.io.IOException;

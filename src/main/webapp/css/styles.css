@@ -24,6 +24,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+ul {
+    margin: 0 !important;
+}
+
 .icon-bell:before {
     content: "\e900";
 }

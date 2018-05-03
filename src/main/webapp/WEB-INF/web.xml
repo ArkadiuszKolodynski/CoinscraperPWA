@@ -18,7 +18,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Storage</servlet-name>
-        <servlet-class>pl.pt.put.poznan.classes.Storage</servlet-class>
+        <servlet-class>pl.pt.put.poznan.servlets.Storage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Storage</servlet-name>
