@@ -24,8 +24,28 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-bottom: 72px;
+}
+
 ul {
     margin: 0 !important;
+}
+
+.auth-form {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+    line-height: 35px;
+}
+
+.card-body {
+    background-color: #FDFDFD;
 }
 
 .icon-bell:before {
@@ -43,6 +63,10 @@ ul {
     color: red;
 }
 
+.form-control {
+    margin-bottom: 10px;
+}
+
 .star-clicked, .icon-star:hover {
     color: #ffd700;
 }
@@ -56,4 +80,12 @@ ul {
     text-shadow: 0 1px 0 #fff;
     opacity: .5;
     text-decoration: none !important;
+}
+
+.page-footer {
+    color: #fff;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }

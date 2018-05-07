@@ -20,8 +20,6 @@
         </nav>
         <br>
         <div class="container">
-
-
             <ul class="nav nav-pills justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="pill" href="#" onclick="showAll()">Wszystkie</a>
@@ -36,33 +34,32 @@
                     <br>
                     <div id="accordion">
                         <c:forEach var="currency" items="${list}">
-                            <div id="${currency.getSymbol()}" class="card">
-                                <div class="card-header">
-                                    <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
-                                    <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
-                                    <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}">
-                                        <img src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
-                                    </a>
-                                </div>
-                                <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <ul>
-                                            <li>Średni kurs: ${currency.getAvgPriceInBitcoin()}BTC / ${currency.getAvgPriceInDollars()}$ </li>
-                                            <li>Najniższy kurs: ${currency.getMinPriceInDollars()}$</li>
-                                            <li>Giełda: ${currency.getMarketName()}</li>
-                                        </ul> 
-                                    </div>
+                        <div id="${currency.getSymbol()}" class="card">
+                            <div class="card-header">
+                                <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
+                                <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
+                                <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}">
+                                    <img src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
+                                </a>
+                            </div>
+                            <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Średni kurs: ${currency.getAvgPriceInBitcoin()}BTC / ${currency.getAvgPriceInDollars()}$ </li>
+                                        <li>Najniższy kurs: ${currency.getMinPriceInDollars()}$</li>
+                                        <li>Giełda: ${currency.getMarketName()}</li>
+                                    </ul> 
                                 </div>
                             </div>
+                        </div>
                         </c:forEach>
                     </div>
                     <br>
                 </div>
             </div>
         </div>
-
         <footer class="page-footer">
-            <div class="footer-copyright py-4 text-center"><jsp:useBean id="now" class="java.util.Date" /><fmt:formatDate var="year" value="${now}" pattern="yyyy" />
+            <div class="footer-copyright bg-dark py-4 text-center"><jsp:useBean id="now" class="java.util.Date" /><fmt:formatDate var="year" value="${now}" pattern="yyyy" />
                 ⓒ ${year}
             </div>
         </footer>

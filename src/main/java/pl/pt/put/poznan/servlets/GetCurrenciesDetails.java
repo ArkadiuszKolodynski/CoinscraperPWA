@@ -24,7 +24,7 @@ public class GetCurrenciesDetails extends HttpServlet {
     private final ArrayList<Currency> currenciesList;
 
     public GetCurrenciesDetails() {
-        this.SQL_QUERY = "SELECT * FROM TopCurrencies";
+        this.SQL_QUERY = "SELECT * FROM TopCurrencies ORDER BY AveragePriceInDollars DESC";
         this.currenciesList = new ArrayList<>();
     }
     

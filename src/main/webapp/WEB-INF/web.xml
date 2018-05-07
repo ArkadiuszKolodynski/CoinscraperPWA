@@ -4,25 +4,53 @@
         <servlet-name>GetCurrenciesDetails</servlet-name>
         <servlet-class>pl.pt.put.poznan.servlets.GetCurrenciesDetails</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>GetCurrenciesDetails</servlet-name>
-        <url-pattern>/index</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>GetCurrencyLogo</servlet-name>
         <servlet-class>pl.pt.put.poznan.servlets.GetCurrencyLogo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminPanel</servlet-name>
+        <servlet-class>pl.pt.put.poznan.servlets.AdminPanel</servlet-class>
+        <init-param>
+            <description>Hasło do panelu administratora</description>
+            <param-name>password</param-name>
+            <param-value></param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadMarketClass</servlet-name>
+        <servlet-class>pl.pt.put.poznan.servlets.UploadMarketClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetCrawlerState</servlet-name>
+        <servlet-class>pl.pt.put.poznan.servlets.SetCrawlerState</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCurrenciesDetails</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetCurrencyLogo</servlet-name>
         <url-pattern>/logo</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>Storage</servlet-name>
-        <servlet-class>pl.pt.put.poznan.servlets.Storage</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>Storage</servlet-name>
-        <url-pattern>/storage</url-pattern>
+        <servlet-name>AdminPanel</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadMarketClass</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <description>Lokalizacja foldera z klasami giełd</description>
+        <param-name>file-upload</param-name>
+        <param-value>
+         /home/admin/Webscrapper/src/main/java/pl/pt/put/poznan/webscraper/
+      </param-value>
+    </context-param>
+    <servlet-mapping>
+        <servlet-name>SetCrawlerState</servlet-name>
+        <url-pattern>/setcrawlerstate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
