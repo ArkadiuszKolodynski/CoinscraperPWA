@@ -35,7 +35,7 @@ public class UploadMarketClass extends HttpServlet {
 
             DiskFileItemFactory factory = new DiskFileItemFactory();
             factory.setSizeThreshold(maxMemSize);
-            factory.setRepository(new File("c:\\temp"));
+            factory.setRepository(new File("/tmp"));
 
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setSizeMax(maxFileSize);
