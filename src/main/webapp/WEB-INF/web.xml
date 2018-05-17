@@ -25,6 +25,10 @@
         <servlet-name>SetCrawlerState</servlet-name>
         <servlet-class>pl.pt.put.poznan.servlets.SetCrawlerState</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DisplayChart</servlet-name>
+        <servlet-class>pl.pt.put.poznan.servlets.DisplayChart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetCurrenciesDetails</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>SetCrawlerState</servlet-name>
         <url-pattern>/setcrawlerstate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayChart</servlet-name>
+        <url-pattern>/chart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
