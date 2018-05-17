@@ -47,16 +47,12 @@ public class UploadMarketClass extends HttpServlet {
                 while (i.hasNext()) {
                     FileItem fi = (FileItem) i.next();
                     if (!fi.isFormField()) {
-                        String fieldName = fi.getFieldName();
                         String fileName = fi.getName();
-                        String contentType = fi.getContentType();
-                        boolean isInMemory = fi.isInMemory();
-                        long sizeInBytes = fi.getSize();
 
-                        if (fileName.lastIndexOf("\\") >= 0) {
-                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
+                        if (fileName.lastIndexOf("/") >= 0) {
+                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("/")));
                         } else {
-                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
+                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("/") + 1));
                         }
                         fi.write(file);
                         request.setAttribute("message", "Pomyślnie wgrano plik: " + fileName);

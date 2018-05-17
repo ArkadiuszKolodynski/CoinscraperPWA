@@ -88,3 +88,8 @@ function setTooltip() {
         trigger : "hover"
     });
 }
+
+function displayChart(elementId) {
+    console.log(elementId);
+    $("#containerForChart" + elementId).load("chart?id=" + elementId);
+}

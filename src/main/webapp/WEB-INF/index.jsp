@@ -34,7 +34,7 @@
                     <br>
                     <div id="accordion">
                         <c:forEach var="currency" items="${list}">
-                        <div id="${currency.getSymbol()}" class="card">
+                            <div id="${currency.getSymbol()}" class="card" onclick="displayChart('${currency.getSymbol()}')">
                             <div class="card-header">
                                 <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
                                 <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
@@ -45,6 +45,7 @@
                             <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
                                 <div class="card-body">
                                     <ul>
+                                        <li id="containerForChart${currency.getSymbol()}"></li>
                                         <li>Średni kurs: ${currency.getAvgPriceInBitcoin()}BTC / ${currency.getAvgPriceInDollars()}$ </li>
                                         <li>Najniższy kurs: ${currency.getMinPriceInDollars()}$</li>
                                         <li>Giełda: ${currency.getMarketName()}</li>
@@ -68,5 +69,6 @@
         <script src="js/script.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+
     </body>
 </html>
