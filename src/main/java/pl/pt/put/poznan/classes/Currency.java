@@ -5,10 +5,10 @@ public class Currency {
     private final String name;
     private final double avgPriceInDollars;
     private final double minPriceInDollars;
-    private final double avgPriceInBitcoin;
+    private final String avgPriceInBitcoin;
     private final String marketName;
     
-    public Currency(String symbol, String name, double avgPriceInDollars, double minPriceInDollars, double avgPriceInBitcoin, String marketName) {
+    public Currency(String symbol, String name, double avgPriceInDollars, double minPriceInDollars, String avgPriceInBitcoin, String marketName) {
         this.symbol = symbol;
         this.name = name;
         this.avgPriceInDollars = avgPriceInDollars;
@@ -33,7 +33,7 @@ public class Currency {
         return minPriceInDollars;
     }
 
-    public double getAvgPriceInBitcoin() {
+    public String getAvgPriceInBitcoin() {
         return avgPriceInBitcoin;
     }
 

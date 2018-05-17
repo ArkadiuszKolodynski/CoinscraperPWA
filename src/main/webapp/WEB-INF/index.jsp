@@ -35,24 +35,47 @@
                     <div id="accordion">
                         <c:forEach var="currency" items="${list}">
                             <div id="${currency.getSymbol()}" class="card" onclick="displayChart('${currency.getSymbol()}')">
-                            <div class="card-header">
-                                <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
-                                <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
-                                <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}">
-                                    <img src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
-                                </a>
-                            </div>
-                            <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    <ul>
-                                        <li id="containerForChart${currency.getSymbol()}"></li>
-                                        <li>Średni kurs: ${currency.getAvgPriceInBitcoin()}BTC / ${currency.getAvgPriceInDollars()}$ </li>
-                                        <li>Najniższy kurs: ${currency.getMinPriceInDollars()}$</li>
-                                        <li>Giełda: ${currency.getMarketName()}</li>
-                                    </ul> 
+                                <div class="card-header">
+                                    <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
+                                    <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
+                                    <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}">
+                                        <img src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
+                                    </a>
+                                </div>
+                                <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
+                                    <div class="card-body">
+
+                                        <div class="card-group">
+                                            <div class="card">
+                                                <div class="card-header bg-primary text-white">Zmiana średniego kursu</div>
+                                                <div class="card-body">
+                                                    <div id="containerForChart${currency.getSymbol()}"></div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header bg-primary text-white">Średni kurs</div>
+                                                <div class="card-body text-center h-100" style="display: flex; flex-wrap: flex;">
+                                                    <h3 class="m-auto w-100">
+                                                        <span class="badge badge-secondary">${currency.getAvgPriceInDollars()}$</span>
+                                                        <hr>
+                                                        <span class="badge badge-secondary">${currency.getAvgPriceInBitcoin()} BTC</span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header bg-primary text-white">Najniższy kurs</div>
+                                                <div class="card-body text-center h-100" style="display: flex; flex-wrap: flex;">
+                                                    <h3 class="m-auto w-100">
+                                                        <span class="badge badge-secondary">${currency.getMinPriceInDollars()}$</span>
+                                                        <hr>
+                                                        <span class="badge badge-secondary">${currency.getMarketName()}</span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </c:forEach>
                     </div>
                     <br>
@@ -69,6 +92,7 @@
         <script src="js/script.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-
+        <script src="js/moment.min.js"></script>
+        <script src="js/Chart.min.js"></script>
     </body>
 </html>

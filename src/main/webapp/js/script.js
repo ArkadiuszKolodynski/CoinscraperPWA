@@ -90,6 +90,5 @@ function setTooltip() {
 }
 
 function displayChart(elementId) {
-    console.log(elementId);
     $("#containerForChart" + elementId).load("chart?id=" + elementId);
 }

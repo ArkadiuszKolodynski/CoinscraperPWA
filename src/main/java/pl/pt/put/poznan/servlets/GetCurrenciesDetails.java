@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,12 +36,14 @@ public class GetCurrenciesDetails extends HttpServlet {
         try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
             while (resultSet.next()) {
+                DecimalFormat df = new DecimalFormat("0.#");
+                df.setMaximumFractionDigits(8);
                 currenciesList.add(new Currency(
                         resultSet.getString("Symbol"),
                         resultSet.getString("Name"),
                         resultSet.getDouble("AveragePriceInDollars"),
                         resultSet.getDouble("MinPriceInDollars"),
-                        resultSet.getDouble("AveragePriceInBitcoin"),
+                        df.format(resultSet.getDouble("AveragePriceInBitcoin")).replace(",", "."),
                         resultSet.getString("MinPriceMarketName")
                 ));
             }
