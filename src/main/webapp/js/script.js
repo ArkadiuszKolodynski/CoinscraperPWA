@@ -91,4 +91,5 @@ function setTooltip() {
 
 function displayChart(elementId) {
     $("#containerForChart" + elementId).load("chart?id=" + elementId);
+    document.getElementById(elementId).scrollIntoView();
 }
