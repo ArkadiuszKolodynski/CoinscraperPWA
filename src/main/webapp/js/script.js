@@ -93,3 +93,10 @@ function displayChart(elementId) {
     $("#containerForChart" + elementId).load("chart?id=" + elementId);
     document.getElementById(elementId).scrollIntoView();
 }
+
+function updateData()
+{ 
+    $("#accordion").load(window.location.href + " #accordion");
+}
+
+setInterval(updateData, 30000);
