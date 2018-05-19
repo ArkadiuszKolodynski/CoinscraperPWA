@@ -1,40 +1,44 @@
 package pl.pt.put.poznan.servlets;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SetCrawlerState extends HttpServlet {
-    
-    private Process p;
-    private OutputStream pStdIn;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         switch (request.getParameter("action")) {
             case "start":
-                if (!AdminPanel.isCrawlerRunning()) {
-                    p = Runtime.getRuntime().exec("mvn -f ../Webscrapper exec:java");
-                    pStdIn = p.getOutputStream();
+                if (!AdminPanel.crawlerIsRunning()) {
+                    Runtime.getRuntime().exec("screen -dmS coinscraper sudo ../Webscrapper/startup.sh");
                     request.setAttribute("message", "Trwa uruchamianie crawlera...");
                 } else {
                     request.setAttribute("message", "Crawler już działa!");
                 }
                 break;
             case "restart":
-                if (AdminPanel.isCrawlerRunning()) {
+                if (AdminPanel.crawlerIsRunning()) {
+                    Process p = Runtime.getRuntime().exec("screen -S coinscraper -X stuff \"stop^M\"");
+                    try {
+                        p.waitFor();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(SetCrawlerState.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Runtime.getRuntime().exec("screen -dmS coinscraper sudo ../Webscrapper/startup.sh");
                     request.setAttribute("message", "Trwa restartowanie serwera...");
                 } else {
                     request.setAttribute("message", "Crawler nie jest uruchomiony!");
                 }
                 break;
             case "stop":
-                if (AdminPanel.isCrawlerRunning()) {
+                if (AdminPanel.crawlerIsRunning()) {
+                    Runtime.getRuntime().exec("screen -S coinscraper -X stuff \"stop^M\"");
                     request.setAttribute("message", "Trwa zatrzymywanie crawlera...");
-                    pStdIn.write("\n".getBytes());
                 } else {
                     request.setAttribute("message", "Crawler nie jest uruchomiony!");
                 }

@@ -24,7 +24,7 @@ public class AdminPanel extends HttpServlet {
         } else if (request.getParameter("password").equals(password)) {
 //            request.getSession().setAttribute("password", "correct");
             request.setAttribute("password", "correct");
-            if (isCrawlerRunning()) {
+            if (crawlerIsRunning()) {
                 request.setAttribute("running", true);
             } else {
                 request.setAttribute("running", false);
@@ -55,28 +55,36 @@ public class AdminPanel extends HttpServlet {
         String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp - 1) + (si ? "" : "i");
         return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
-    
-    public static boolean isCrawlerRunning() {
+
+    public static boolean crawlerIsRunning() {
         try {
-            boolean os = System.getProperty("os.name").contains("Windows");
+//            boolean os = System.getProperty("os.name").contains("Windows");
+//            String line;
+//            Process p = Runtime.getRuntime().exec(os ? "tasklist.exe" : "ps -e");
+//            BufferedReader input =  new BufferedReader(new InputStreamReader(p.getInputStream()));
+//            while ((line = input.readLine()) != null) {
+//                if (line.contains(os ? "java.exe" : "java")) {
+//                    String line2;
+//                    Process p2 = Runtime.getRuntime().exec(
+//                            os ? 
+//                            "wmic process where processid=" + line.split("\\s+")[1] + " get commandline" :
+//                            "cat /proc/" + line.split("\\s+")[0] + "/cmdline"
+//                    );
+//                    BufferedReader input2 = new BufferedReader(new InputStreamReader(p2.getInputStream()));
+//                    while ((line2 = input2.readLine()) != null) {
+////                        if (line2.contains("pl.pt.put.poznan.webscraper.Crawler")) {
+//                        if (line2.contains("Webscrapper")) {
+//                            return true;
+//                        }
+//                    }
+//                }
+//            }
             String line;
-            Process p = Runtime.getRuntime().exec(os ? "tasklist.exe" : "ps -e");
-            BufferedReader input =  new BufferedReader(new InputStreamReader(p.getInputStream()));
+            Process p = Runtime.getRuntime().exec("screen -list");
+            BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((line = input.readLine()) != null) {
-                if (line.contains(os ? "java.exe" : "java")) {
-                    String line2;
-                    Process p2 = Runtime.getRuntime().exec(
-                            os ? 
-                            "wmic process where processid=" + line.split("\\s+")[1] + " get commandline" :
-                            "cat /proc/" + line.split("\\s+")[0] + "/cmdline"
-                    );
-                    BufferedReader input2 = new BufferedReader(new InputStreamReader(p2.getInputStream()));
-                    while ((line2 = input2.readLine()) != null) {
-//                        if (line2.contains("pl.pt.put.poznan.webscraper.Crawler")) {
-                        if (line2.contains("Webscrapper")) {
-                            return true;
-                        }
-                    }
+                if (line.contains("coinscraper")) {
+                    return true;
                 }
             }
         } catch (IOException ex) {
@@ -84,7 +92,7 @@ public class AdminPanel extends HttpServlet {
         }
         return false;
     }
-    
+
     @Override
     public void init() {
         this.file = new File("/");

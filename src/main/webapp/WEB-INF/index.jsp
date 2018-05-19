@@ -28,7 +28,6 @@
                     <a class="nav-link" data-toggle="pill" href="#" onclick="showFavs()">Ulubione</a>
                 </li>
             </ul>
-
             <div class="tab-content">
                 <div id="all" class="container">
                     <br>
@@ -36,15 +35,14 @@
                         <c:forEach var="currency" items="${list}">
                             <div id="${currency.getSymbol()}" class="card">
                                 <div class="card-header">
-                                    <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
-                                    <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
+                                    <span class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></span>
+                                    <span class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></span>
                                     <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}" onclick="displayChart('${currency.getSymbol()}')">
-                                        <img src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
+                                        <img data-src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
                                     </a>
                                 </div>
                                 <div id="collapse${currency.getSymbol()}" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-
                                         <div class="card-group">
                                             <div class="card">
                                                 <div class="card-header bg-primary text-white">Zmiana średniego kursu</div>
@@ -87,11 +85,11 @@
                 ⓒ ${year}
             </div>
         </footer>
-
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/script.js"></script>
-        <script src="js/popper.min.js" async></script>
-        <script src="js/bootstrap.min.js" async></script>
+        <script src="js/jquery-3.3.1.min.js" defer></script>
+        <script src="js/script.js" defer></script>
+        <script src="js/lazyload.min.js" defer></script>
+        <script src="js/popper.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
         <script src="js/moment.min.js" async></script>
         <script src="js/Chart.min.js" async></script>
     </body>

@@ -72,6 +72,7 @@ ul {
 }
 
 .my-icons {
+    cursor: pointer;
     float: right;
     font-size: 1.5rem;
     font-weight: 700;

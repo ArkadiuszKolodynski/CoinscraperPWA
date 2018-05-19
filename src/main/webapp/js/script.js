@@ -1,9 +1,4 @@
-$(document).ready(function () {
-    localStorage.allCurrencies = document.getElementById("accordion").innerHTML;
-    setFavs();
-    setTooltip();
-    preventScroll();
-
+$(document).ready(function() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
                 .register('service-worker.js')
@@ -13,9 +8,17 @@ $(document).ready(function () {
     }
 });
 
-$(".my-icons").on("click", function (event) {
-    event.stopPropagation();
-});
+window.onload = function () {
+    localStorage.allCurrencies = document.getElementById("accordion").innerHTML;
+    setFavs();
+    setTooltip();
+    preventScroll();
+    new LazyLoad();
+    
+    $(".my-icons").on("click", function (event) {
+        event.stopPropagation();
+    });
+};
 
 function setFavs() {
     if (localStorage.getItem("favs") === null) {
@@ -81,6 +84,7 @@ function showAll() {
     setFavs();
     setTooltip();
     preventScroll();
+    new LazyLoad();
 }
 
 function preventScroll() {
