@@ -1,14 +1,20 @@
-$(document).ready(function() {
+$(document).ready(function () {
     localStorage.allCurrencies = document.getElementById("accordion").innerHTML;
     setFavs();
     setTooltip();
-    preventScroll();;
-    
+    preventScroll();
+
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('service-worker.js')
-            .then(function() { console.log('Service Worker Registered'); });
+                .register('service-worker.js')
+                .then(function () {
+                    console.log('Service Worker Registered');
+                });
     }
+});
+
+$(".my-icons").on("click", function (event) {
+    event.stopPropagation();
 });
 
 function setFavs() {
@@ -36,7 +42,7 @@ function toggleFav(elementId) {
     } else {
         $("#" + $.escapeSelector(elementId)).parent().attr("data-original-title", "Dodaj do ulubionych");
     }
-    
+
     var favourites = JSON.parse(localStorage.favs);
     if (!favourites.includes(elementId)) {
         favourites.push(elementId);
@@ -63,7 +69,7 @@ function showFavs() {
         element.classList.add("text-center");
         element.innerHTML = "Nie posiadasz ulubionych!";
     }
-    
+
     setTooltip();
     preventScroll();
 }
@@ -78,14 +84,14 @@ function showAll() {
 }
 
 function preventScroll() {
-    $("a").click(function(evt) {
+    $("a").click(function (evt) {
         evt.preventDefault();
     });
 }
 
 function setTooltip() {
     $('[data-toggle="tooltip"]').tooltip({
-        trigger : "hover"
+        trigger: "hover"
     });
 }
 
@@ -94,9 +100,9 @@ function displayChart(elementId) {
     document.getElementById(elementId).scrollIntoView();
 }
 
-function updateData()
-{ 
-    $("#accordion").load(window.location.href + " #accordion");
-}
-
-setInterval(updateData, 30000);
+//function updateData()
+//{
+//    $("#accordion").load(window.location.href + " #accordion");
+//}
+//
+//setInterval(updateData, 30000);

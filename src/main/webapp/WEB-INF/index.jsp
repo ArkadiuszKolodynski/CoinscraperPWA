@@ -34,11 +34,11 @@
                     <br>
                     <div id="accordion">
                         <c:forEach var="currency" items="${list}">
-                            <div id="${currency.getSymbol()}" class="card" onclick="displayChart('${currency.getSymbol()}')">
+                            <div id="${currency.getSymbol()}" class="card">
                                 <div class="card-header">
                                     <a href="#" class="my-icons" data-toggle="tooltip" title="Dodaj do ulubionych"><span id="star${currency.getSymbol()}" class="icon-star" onclick="toggleFav(this.id)"></span></a>
                                     <a href="#" class="my-icons" data-toggle="tooltip" title="Ustaw alarm"><span id="bell${currency.getSymbol()}" class="icon-bell"></span></a>
-                                    <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}">
+                                    <a class="card-link" data-toggle="collapse" href="#collapse${currency.getSymbol()}" onclick="displayChart('${currency.getSymbol()}')">
                                         <img src="logo?id=${currency.getSymbol()}" alt=""/> ${currency.getSymbol()} ${currency.getName()}
                                     </a>
                                 </div>
@@ -90,9 +90,9 @@
 
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/script.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/moment.min.js"></script>
-        <script src="js/Chart.min.js"></script>
+        <script src="js/popper.min.js" async></script>
+        <script src="js/bootstrap.min.js" async></script>
+        <script src="js/moment.min.js" async></script>
+        <script src="js/Chart.min.js" async></script>
     </body>
 </html>
