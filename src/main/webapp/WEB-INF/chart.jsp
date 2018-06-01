@@ -6,7 +6,7 @@
         maintainAspectRatio: false,
         data: {
             datasets: [{
-                    label: 'Kurs <%= request.getParameter("id")%> w $',
+                    label: 'Kurs <%= request.getParameter("id")%>',
                     borderColor: '#007bff',
                     steppedLine: 'default',
                     backgroundColor: 'rgba(0, 123, 255, 0.2)',
